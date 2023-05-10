@@ -1,3 +1,16 @@
+<template>
+    <n-space vertical size="large" class="container-main">
+        <n-layout has-sider>
+            <n-layout-sider bordered collapse-mode="width" :width="240" :collapsed-width="64" show-trigger @collapse="collapsed = false" @expand="collapsed = false">
+                <n-menu :collapsed-width="64" :collapsed-icon-size="22" :options="menuOptions" :render-label="renderMenuLabel" :render-icon="renderMenuIcon" :expand-icon="expandIcon"></n-menu>
+            </n-layout-sider>
+            <n-layout-content>
+                <EditorInterface />
+            </n-layout-content>
+        </n-layout>
+    </n-space>
+</template>
+
 <script setup lang="ts">
 import { h } from 'vue'
 import type { MenuOption } from 'naive-ui';
@@ -38,15 +51,3 @@ const expandIcon: Function = () => {
     return h(NIcon, null, { default: () => h(CaretDownOutline) })
 }
 </script>
-<template>
-    <n-space vertical>
-        <n-layout has-sider :collapsed="collapsed" show-trigger @collapse="collapsed = true" @expand="collapsed = false">
-            <n-layout-sider bordered collapse-mode="width" :width="240" :collapsed-width="64" :collapsed="collapsed">
-                <n-menu :collapsed="collapsed" :collapsed-width="64" :collapsed-icon-size="22" :options="menuOptions" :render-label="renderMenuLabel" :render-icon="renderMenuIcon" :expand-icon="expandIcon"></n-menu>
-            </n-layout-sider>
-            <n-layout-content>
-                <EditorInterface />
-            </n-layout-content>
-        </n-layout>
-    </n-space>
-</template>
